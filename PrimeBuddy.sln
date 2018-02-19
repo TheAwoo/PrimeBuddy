@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeBuddy", "PrimeBuddy\PrimeBuddy.csproj", "{FBC9507C-0856-448B-86A3-10488A9712A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBC9507C-0856-448B-86A3-10488A9712A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC9507C-0856-448B-86A3-10488A9712A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC9507C-0856-448B-86A3-10488A9712A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC9507C-0856-448B-86A3-10488A9712A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBC9507C-0856-448B-86A3-10488A9712A4}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{FBC9507C-0856-448B-86A3-10488A9712A4}.Test|Any CPU.Build.0 = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B232A428-84B1-4BCF-9D3E-F1AD10B9C5DD}
+	EndGlobalSection
+EndGlobal
