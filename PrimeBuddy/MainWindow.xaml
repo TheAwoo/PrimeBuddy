@@ -3,6 +3,69 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PrimeBuddy" Height="350" Width="301" Icon="icon.png"
         Closing="onClose">
-    <ListBox x:Name="ItemList" Margin="4,4,4,4"/>
+    <TabControl Margin="0,0,0,0">
+        <TabItem Header="Drops">
+            <Grid Background="#FFE5E5E5">
+                <ListBox Name="ItemList" Margin="0,0,0,0" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Inventory">
+            <DataGrid x:Name="GridInventory" CanUserResizeRows="False" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="Item" Width="8*" CanUserResize="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="2*" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </TabItem>
+        <TabItem Header="Options">
+            <StackPanel Margin="0">
+                <Grid Height="24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Image size" Margin="0" FontSize="10" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="ComboImageSize" Grid.Column="1" Margin="0" SelectedIndex="0" VerticalContentAlignment="Center">
+                        <ListBoxItem Content="1920x1080"/>
+                        <ListBoxItem Content="1280x720"/>
+                        <ListBoxItem Content="Custom"/>
+                    </ComboBox>
+                </Grid>
 
+                <Grid Height="24" Margin="0,8,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Crop rect" Margin="0" FontSize="10" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TxtCropRect" Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="757 884 406 32" VerticalContentAlignment="Center" />
+                </Grid>
+
+                <Grid Height="24" Margin="0,8,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="GSheet ID" Margin="0" FontSize="10" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TxtSheetID" Grid.Column="1" Margin="0" Text="1WGrVWLi5-d5H4LI-B6FdgVwYXXp0CwdeNnpkHyXdNJA" FontSize="8" TextWrapping="Wrap" MinLines="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" />
+                </Grid>
+
+                <Grid Height="24" Margin="0,8,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="BtnClearDrops" Content="Clear Drop List" Grid.Column="0" Margin="4,0" FontSize="10" VerticalContentAlignment="Center" Click="BtnClearDrops_Click" />
+                    <CheckBox x:Name="ChkDebug" Content="Debug Mode" Grid.Column="1" Margin="4,0" VerticalAlignment="Center" FontSize="10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Checked="ChkDebug_Checked" Unchecked="ChkDebug_Unchecked" />
+                    <Button Content="Button" Grid.Column="2" Margin="4,0" FontSize="10" />
+                </Grid>
+
+            </StackPanel>
+        </TabItem>
+        <TabItem x:Name="TabDebug" Header="Program Log" Visibility="Hidden">
+            <TextBox x:Name="DebugLog" TextWrapping="Wrap" IsReadOnly="True" Text="Debug log goes here" FontSize="10" FontFamily="Consolas" />
+        </TabItem>
+    </TabControl>
 </Window>

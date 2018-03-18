@@ -11,6 +11,7 @@ namespace PrimeBuddy
     {
         FileSystemWatcher Watcher;
         StreamWriter LogFile;
+        BuddySheets Sheet;
 
         public MainWindow()
         {
@@ -32,6 +33,9 @@ namespace PrimeBuddy
 
             // Keep history
             LogFile = new StreamWriter(new FileStream(logpath, FileMode.OpenOrCreate));
+
+            // Create GSheet objects
+            Sheet = new BuddySheets(TxtSheetID.Text, "Prime Stuff (flat)", 0, 3);
         }
 
         void Watcher_Created(object sender, FileSystemEventArgs e)
@@ -79,7 +83,12 @@ namespace PrimeBuddy
                         if (String.IsNullOrWhiteSpace(text))
                             text = "UNKNOWN";
 
-                        Dispatcher.Invoke(() => 
+                        else
+                            // Call sheets
+                            if (!Sheet.UpdateItemCount(text))
+                                text = "[UNSYNCED] " + text;
+
+                        Dispatcher.Invoke(() =>
                         {
                             ItemList.Items.Add(string.Format("{0} - {1}", filename, text));
                             LogFile.Write(string.Format("{0} - {1}" + Environment.NewLine, filename, text));
@@ -90,12 +99,7 @@ namespace PrimeBuddy
             }
 
             // Cleanup!
-            File.Delete("./tempcrop.jpg");
-        }
-
-        void onClose(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            LogFile.Close();
-        }
+            File.Delete("./tempcrop.jpg");            
+        }        
     }
 }
